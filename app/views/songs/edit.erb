@@ -1,0 +1,19 @@
+<h1> EDIT THIS </h1>
+
+<h2> <%= @song.name %> </h2>
+
+<form method="POST" action="/songs/<%= @song.id %>">
+    
+        <input type="hidden" id="hidden" name="_method" value="PATCH">
+
+    <p> Name: <input type="text" name="name" value="<%= @song.name %>" ></p>
+    <p> Artist: <input type="text" name="artist" value="<%= @song.artist %>"></p>
+    <p> Genre: <input type="text" name="genre" value="<%= @song.genre %>"></p>
+
+    
+    <br><br>
+    
+
+    <input type="submit">
+
+</form>

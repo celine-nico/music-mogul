@@ -1,0 +1,25 @@
+<h2>Please Fill Out the Form Below to Make an Account</h2>
+
+<% if @user && @user.errors %>
+    <% @user.errors.full_messages.each do | error | %>
+        <h3 class="error"><%= error %></h3>
+    <% end %>
+<% end %>
+<% if @user && @user.errors %>
+    <h3 class="error"><%= @user.errors.full_messages.to_sentence  %></h3>
+<% end %>
+
+
+
+<form action="/signup" method="post">
+<label for="name">Name:</label> <input type="text" name="name" id="name"/>
+<br><br>
+<label for="username">Username:</label> <input type="text" name="username" id="username"/>
+<br><br>
+<label for="password">Password:</label> <input type="password" name="password" id="password"/>
+<br><br>
+<label for="address">Hometown:</label> <input type="text" name="hometown" id="hometown"/>
+<br><br>
+<input type="submit" value="Submit">
+</form>
+</form>

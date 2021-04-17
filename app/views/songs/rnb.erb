@@ -1,0 +1,11 @@
+<h1>R&B Songs</h1>
+
+<ul>
+
+<% @songs.each do |song| %>
+    <% if song.genre == "R&B" %>
+        "<%= song.name %>" - <%= song.artist %><br>
+    <% end %>
+<% end %>
+
+</ul>
