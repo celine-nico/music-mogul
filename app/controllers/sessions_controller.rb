@@ -5,15 +5,13 @@ class SessionsController < ApplicationController
     end
 
     post '/login' do
-        #finds the user by their username
         user = User.find_by(username: params[:username])
-        # checks to see if user exists and password is correct 
+        # checks to see if user exists  
         if user && user.authenticate(params[:password])
-            # puts user into sessions
             session[:user_id] = user.id
-            # redirect them somewhere
+            # redirects to index
             redirect "/songs"
-        # if they don't, then redirect them somewhere else
+        # if they don't, then redirect to login
         else
             redirect "/login"
         end
