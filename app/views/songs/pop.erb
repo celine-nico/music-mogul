@@ -4,7 +4,7 @@
 
 <% @songs.each do |song| %>
     <% if song.genre == "Pop" %>
-        "<%= song.name %>" - <%= song.artist %><br>
+        <a href="/songs/<%=song.id%>">"<%= song.name %>" - <%= song.artist %></a><br>
     <% end %>
 <% end %>
 

@@ -2,8 +2,12 @@ class SongsController < ApplicationController
 
     
     get '/songs' do
-        @songs = Song.all
-        erb :"songs/index"
+        if logged_in?
+            @songs = Song.all
+            erb :"songs/index"
+        else 
+            redirect "/login"
+        end
     end 
 
     get '/songs/alternative' do 
@@ -32,26 +36,42 @@ class SongsController < ApplicationController
     end 
 
     get '/songs/new' do 
-        @songs = Song.all
-        erb :"songs/new"
+        if logged_in?
+            @songs = Song.all
+            erb :"songs/new"
+        else 
+            redirect "/login"
+        end 
     end 
 
     get '/songs/:id' do 
-        # @songs = Song.all
-        @song = Song.find_by_id(params[:id])
-        erb :"songs/show"
+        if logged_in?
+            
+            @song = Song.find_by_id(params[:id])
+            @creator = User.find_by_id(@song.user_id)
+            erb :"songs/show"
+        else 
+            redirect "/login"
+        end 
     end 
 
     get '/songs/:id/edit' do 
-        @song = Song.find_by_id(params[:id])
-        erb :"songs/edit"
+        if logged_in?
+            @song = Song.find_by_id(params[:id])
+            if @song.user_id != current_user.id || @song.user_id == nil 
+                redirect "/songs"
+            else 
+                erb :"songs/edit"
+            end 
+        else 
+            redirect "/login"
+        end
     end 
 
     post '/songs' do 
         song = current_user.songs.build(params)
     
         if song.save
-            binding.pry
             redirect "/songs/#{song.id}"
         else 
             redirect "/songs/new"

@@ -13,7 +13,7 @@
 
   /* --- Welcome Page Styles --- */
   body {
-    background-color: lightblue;
+    background-color: rgb(32, 3, 70);
     color: #333;
     font-family: Sans-Serif;
     line-height: 18px;
@@ -49,6 +49,7 @@
 
   p {
     margin-bottom: 18px;
+    font-family: 'Ubuntu Mono', monospace;
   }
 
   .main {
@@ -80,6 +81,13 @@
     border-top: 2px solid #ccc;
     margin-top: 20px;
     padding-top: 20px;
+  }
+  #title {
+    font-family: 'Zen Dots', cursive;
+    color:rgb(3, 3, 121)
+  }
+  #index-title {
+    font-family: 'Zen Dots', cursive;
   }
 }
 
